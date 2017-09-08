@@ -1,0 +1,8 @@
+# Facebook
+APP_SECRET:
+ACCESS_TOKEN:
+VERIFY_TOKEN:
+
+# api.ai
+API_AI_AUTH:
+API_AI_URL:
