@@ -1,11 +1,13 @@
 module ApiAi
   class OutputGenerator
-    ACTION_PERFORMERS = {}.freeze
+    ACTION_PERFORMERS = {
+      create_to_do: Actions::CreateToDo
+    }.freeze
 
     def call
       return { text: response[:output] } unless action_performer
 
-      action_performer.new(response: response).call
+      action_performer.new(response).call
     end
 
     private
