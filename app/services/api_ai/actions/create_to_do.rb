@@ -6,7 +6,7 @@ module ApiAi
 
         user.to_dos.create(item: item)
 
-        { text: to_do_list }
+        { text: user.to_do_list }
       end
 
       private
@@ -18,12 +18,6 @@ module ApiAi
         @output = response[:output]
         @action_incomplete = response[:action_incomplete]
         @item = response[:parameters][:item]
-      end
-
-      def to_do_list
-        user.to_dos.map.with_index do |to_do, index|
-          "#{index + 1}. #{to_do.item}"
-        end.join("\n")
       end
     end
   end
