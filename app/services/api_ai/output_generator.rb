@@ -1,7 +1,8 @@
 module ApiAi
   class OutputGenerator
     ACTION_PERFORMERS = {
-      create_to_do: Actions::CreateToDo
+      create_to_do: Actions::CreateToDo,
+      destroy_to_do: Actions::DestroyToDo
     }.freeze
 
     def call
