@@ -4,7 +4,7 @@ module ApiAi
       def call
         return { text: output } if action_incomplete
 
-        ids = user.to_dos.ids.values_at(*items.map { |item| item - 1 })
+        ids = user.to_dos.ids.values_at(*items.map { |item| item - 1 }).compact
         user.to_dos.where(id: ids).delete_all
 
         { text: 'Your tasks where successfully deleted' }

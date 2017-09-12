@@ -2,7 +2,7 @@ module ApiAi
   module Actions
     class GetToDo
       def call
-        { text: user.to_do_list }
+        { text: message }
       end
 
       private
@@ -11,6 +11,10 @@ module ApiAi
 
       def initialize(response)
         @user = User.find_by(psid: response[:psid])
+      end
+
+      def message
+        user.to_do_list.present? ? user.to_do_list : "You don't have any todos"
       end
     end
   end
