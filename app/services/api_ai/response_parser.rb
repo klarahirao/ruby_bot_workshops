@@ -3,7 +3,7 @@ module ApiAi
     def call
       { action: response[:result][:action].to_sym,
         action_incomplete: response[:result][:actionIncomplete],
-        output: output,
+        output: response[:result][:fulfillment][:speech],
         parameters: response[:result][:parameters],
         psid: response[:sessionId] }
     end
@@ -14,11 +14,6 @@ module ApiAi
 
     def initialize(response)
       @response = response
-    end
-
-    def output
-      messages = response[:result][:fulfillment][:messages]
-      messages.detect { |message| message[:type] == 0 }[:speech]
     end
   end
 end
